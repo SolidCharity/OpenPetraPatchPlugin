@@ -1,0 +1,35 @@
+--- before/csharp/ICT/Petra/Client/MConference/Gui/Tools/CreateGiftBatchForParticipants.yaml	2014-05-10 15:20:00.000000000 +0200
++++ plugin/csharp/ICT/Petra/Client/MConference/Gui/Tools/CreateGiftBatchForParticipants.yaml	1970-01-01 01:00:00.000000000 +0100
+@@ -1,32 +0,0 @@
+-RootNode:
+-    BaseYaml: ../../../CommonForms/PetraForm.yaml
+-    FormTitle: Create Gift batch for Participants
+-    Namespace: Ict.Petra.Client.MConference.Gui.Tools
+-    FormType: browse
+-    Template: window
+-    WindowWidth: 858
+-    #WindowHeight: 900
+-    Actions:
+-        actExportGiftBatch: {Label=&Export Gift Batch, ActionClick=ExportGiftBatch}
+-    Controls:
+-        pnlContent:
+-            Controls: [tabPaste]
+-            Dock: Fill
+-        tabPaste:
+-            Controls: [tpgPaymentData,tpgPartnerKeyMatching]
+-            Dock: Fill
+-        tpgPaymentData:
+-            Controls: [txtPaymentData]
+-        tpgPartnerKeyMatching:
+-            Controls: [txtPartnerKeyMatching]
+-        txtPaymentData:
+-            Dock: Top
+-            Multiline: true
+-            Height:400
+-        txtPartnerKeyMatching:
+-            Dock: Top
+-            Multiline: true
+-            Height:400
+-    Menu:
+-    Toolbar:
+-        tbbExportGiftBatch:

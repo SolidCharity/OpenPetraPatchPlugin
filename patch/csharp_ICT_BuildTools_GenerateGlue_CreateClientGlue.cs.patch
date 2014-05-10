@@ -1,0 +1,62 @@
+--- before/csharp/ICT/BuildTools/GenerateGlue/CreateClientGlue.cs	2014-05-10 15:20:00.000000000 +0200
++++ plugin/csharp/ICT/BuildTools/GenerateGlue/CreateClientGlue.cs	2014-05-10 15:19:09.000000000 +0200
+@@ -4,7 +4,7 @@
+ // @Authors:
+ //       timop
+ //
+-// Copyright 2004-2013 by OM International
++// Copyright 2004-2014 by OM International
+ //
+ // This file is part of OpenPetra.org.
+ //
+@@ -200,7 +200,7 @@
+         List <TypeDeclaration>ConnectorClasses = TCollectConnectorInterfaces.FindTypesInNamespace(connectors, ConnectorNamespace);
+ 
+         ConnectorNamespace = ConnectorNamespace.
+-                             Replace("Ict.Petra.Shared.", "Ict.Petra.Server.");
++                             Replace(".Shared.", ".Server.");
+ 
+         foreach (TypeDeclaration connectorClass in ConnectorClasses)
+         {
+@@ -370,7 +370,7 @@
+         List <TypeDeclaration>ConnectorClasses = TCollectConnectorInterfaces.FindTypesInNamespace(connectors, ConnectorNamespace);
+ 
+         ConnectorNamespace = ConnectorNamespace.
+-                             Replace("Ict.Petra.Shared.", "Ict.Petra.Server.");
++                             Replace(".Shared.", ".Server.");
+ 
+         foreach (TypeDeclaration connectorClass in ConnectorClasses)
+         {
+@@ -505,6 +505,10 @@
+         {
+             SharedPathName = "Ict.Petra.Server.App.Core." + tn.Name;
+         }
++        else if (OutputFile.Contains("ICT/Petra/Plugins"))
++        {
++            SharedPathName = "Ict.Petra.Plugins." + tn.Name;
++        }
+ 
+         InsertSubNamespaces(Template, connectors, tn.Name, SharedPathName, tn);
+ 
+@@ -522,6 +526,12 @@
+         {
+             Template.SetCodelet("REMOTEOBJECTSNAMESPACE", "Ict.Petra.ServerAdmin.App.Core.RemoteObjects");
+         }
++        else if (OutputFile.Contains("ICT/Petra/Plugins"))
++        {
++            string pluginWithNamespace = TAppSettingsManager.GetValue("plugin");
++            Template.SetCodelet("REMOTEOBJECTSNAMESPACE", pluginWithNamespace + ".RemoteObjects");
++            Template.AddToCodelet("USINGNAMESPACES", "using " + pluginWithNamespace + ".Data;" + Environment.NewLine);
++        }
+         else
+         {
+             Template.SetCodelet("REMOTEOBJECTSNAMESPACE", "Ict.Petra.Client.App.Core.RemoteObjects");
+@@ -581,7 +591,7 @@
+ 
+             if ((module == "all") || (tn.Name == module))
+             {
+-                SortedList <string, TypeDeclaration>connectors = TCollectConnectorInterfaces.GetConnectors(tn.Name);
++                SortedList <string, TypeDeclaration>connectors = TCollectConnectorInterfaces.GetConnectors(AOutputPath, tn.Name);
+                 CreateClientGlue(tn, connectors, AOutputPath);
+             }
+         }
