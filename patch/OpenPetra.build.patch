@@ -1,6 +1,8 @@
---- before/OpenPetra.build	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/OpenPetra.build	2014-05-10 15:19:09.000000000 +0200
-@@ -52,7 +52,7 @@
+diff --git a/OpenPetra.build b/OpenPetra.build
+index d4bc6a6..90a86ef 100644
+--- a/OpenPetra.build
++++ b/OpenPetra.build
+@@ -52,7 +52,7 @@ compat:
    generateORM: generates Object Relational Mapping routines from petra.xml
      sub items: generateORMCachedTables, generateORMData, generateORMAccess, generateORMReferenceCounts
    generateGlue: generates the interfaces and instantiators, which is the glue between client and server
@@ -9,19 +11,19 @@
    generateWinform: generate a single yaml file, compile it and optionally and start the client
         nant generateWinform -D:file=MFinance/Gui/GL/GLBatch.yaml
         nant generateWinform startPetraClient -D:file=MFinance/Gui/GL/GLBatch.yaml
-@@ -311,6 +311,7 @@
- <target name="generateORMData">
+@@ -394,6 +394,7 @@ useful parameters
+   
    <!-- generate the files for Ict.Petra.Shared.lib.data, ie. the tables and datasets -->
    <nant inheritall="false" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/Shared/Ict.Petra.Shared.build')}" verbose="${verbose}"/>
 +  <nant inheritall="false" target="custdependORM" buildfile="${path::combine(dir.csharp, 'ICT/Petra/Plugins/Plugins.build')}" verbose="${verbose}"/>
+   
+   <echo message="Target generateORMData finished at: ${datetime::now()}" />         
  </target>
- 
- <target name="generateORMAccess">
-@@ -324,6 +325,7 @@
+@@ -415,6 +416,7 @@ useful parameters
    <if test="${WithWindowsClient or WithLinuxClient}">
      <nant inheritall="true" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/Client/Ict.Petra.Client.build')}" verbose="${verbose}"/>
      <nant inheritall="true" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/PetraClient/PetraClient.build')}" verbose="${verbose}"/>
 +    <nant inheritall="true" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/Plugins/Plugins.build')}" verbose="${verbose}"/>
    </if>
- </target>
- 
+   
+   <echo message="Target generateWinforms finished at: ${datetime::now()}" />
