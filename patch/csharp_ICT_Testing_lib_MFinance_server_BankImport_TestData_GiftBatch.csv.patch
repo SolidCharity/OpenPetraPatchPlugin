@@ -1,0 +1,8 @@
+--- before/csharp/ICT/Testing/lib/MFinance/server/BankImport/TestData/GiftBatch.csv	2014-05-15 21:54:24.000000000 +0200
++++ patched/csharp/ICT/Testing/lib/MFinance/server/BankImport/TestData/GiftBatch.csv	1970-01-01 01:00:00.000000000 +0100
+@@ -1,5 +0,0 @@
+-"B","NUnit Gift Batch","6200",0.0000000000,2010-09-30,"EUR",1.0000000000,"4300","Gift"
+-"T",43005001,"Donor, Test, Mr","","","","",73000000,"Kenya",20.0000000000,no,"GIFT","FIELD","","Both","","","Both","","Both",yes
+-"T",43005001,"Donor, Test, Mr","","","","",73000000,"Kenya",25.0000000000,no,"GIFT","FIELD","","Both","","","Both","","Both",yes
+-"T",43005002,"Test Company EUR","","","","",73000000,"Kenya",30.0000000000,no,"GIFT","FIELD","","Both","","","Both","","Both",yes
+-"T",43005001,"Donor, Test, Mr","","","","",73000000,"Kenya",40.0000000000,no,"GIFT","FIELD","","Both","","","Both","","Both",yes

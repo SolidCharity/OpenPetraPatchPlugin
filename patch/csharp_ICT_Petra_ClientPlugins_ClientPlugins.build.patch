@@ -1,0 +1,10 @@
+--- before/csharp/ICT/Petra/ClientPlugins/ClientPlugins.build	2014-05-15 21:54:24.000000000 +0200
++++ patched/csharp/ICT/Petra/ClientPlugins/ClientPlugins.build	1970-01-01 01:00:00.000000000 +0100
+@@ -1,6 +0,0 @@
+-<?xml version="1.0"?>
+-<project name="ClientPlugins-Build">
+-
+-<include buildfile="../../../../inc/nant/OpenPetra.csharp.xml"/> 
+-
+-</project>
+\ No newline at end of file

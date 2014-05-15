@@ -1,5 +1,5 @@
---- before/setup/setup.build	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/setup/setup.build	2014-05-10 15:19:09.000000000 +0200
+--- before/setup/setup.build	2014-05-15 21:56:00.000000000 +0200
++++ patched/setup/setup.build	2014-05-15 22:04:07.000000000 +0200
 @@ -438,6 +438,7 @@
      <delete>
        <fileset>

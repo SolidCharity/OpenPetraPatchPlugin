@@ -1,5 +1,5 @@
---- before/csharp/ICT/BuildTools/GenerateGlue/Program.cs	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/csharp/ICT/BuildTools/GenerateGlue/Program.cs	2014-05-10 15:19:09.000000000 +0200
+--- before/csharp/ICT/BuildTools/GenerateGlue/Program.cs	2014-05-15 21:56:00.000000000 +0200
++++ patched/csharp/ICT/BuildTools/GenerateGlue/Program.cs	2014-05-15 22:04:07.000000000 +0200
 @@ -4,7 +4,7 @@
  // @Authors:
  //       timop

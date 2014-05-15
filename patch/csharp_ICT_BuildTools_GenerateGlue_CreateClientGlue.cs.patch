@@ -1,5 +1,5 @@
---- before/csharp/ICT/BuildTools/GenerateGlue/CreateClientGlue.cs	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/csharp/ICT/BuildTools/GenerateGlue/CreateClientGlue.cs	2014-05-10 15:19:09.000000000 +0200
+--- before/csharp/ICT/BuildTools/GenerateGlue/CreateClientGlue.cs	2014-05-15 21:56:00.000000000 +0200
++++ patched/csharp/ICT/BuildTools/GenerateGlue/CreateClientGlue.cs	2014-05-15 22:04:35.000000000 +0200
 @@ -4,7 +4,7 @@
  // @Authors:
  //       timop
@@ -27,7 +27,20 @@
  
          foreach (TypeDeclaration connectorClass in ConnectorClasses)
          {
-@@ -505,6 +505,10 @@
+@@ -499,12 +499,23 @@
+         InterfacePath = InterfacePath.Substring(0, InterfacePath.IndexOf("csharp/ICT/Petra")) + "csharp/ICT/Petra/Shared/lib/Interfaces";
+         Template.AddToCodelet("USINGNAMESPACES", CreateInterfaces.AddNamespacesFromYmlFile(InterfacePath, tn.Name));
+ 
++        if (AOutputPath.Contains("ICT/Petra/Plugins/"))
++        {
++            // add namespaces that are required by the plugin
++            InterfacePath = Path.GetFullPath(AOutputPath + "/../").Replace(Path.DirectorySeparatorChar, '/');
++            Template.AddToCodelet("USINGNAMESPACES", CreateInterfaces.AddNamespacesFromYmlFile(InterfacePath, "Plugin"));
++        }
++
+         string SharedPathName = "Ict.Petra.Shared.M" + tn.Name;
+ 
+         if (SharedPathName.Contains("ServerAdmin"))
          {
              SharedPathName = "Ict.Petra.Server.App.Core." + tn.Name;
          }
@@ -38,7 +51,7 @@
  
          InsertSubNamespaces(Template, connectors, tn.Name, SharedPathName, tn);
  
-@@ -522,6 +526,12 @@
+@@ -522,6 +533,11 @@
          {
              Template.SetCodelet("REMOTEOBJECTSNAMESPACE", "Ict.Petra.ServerAdmin.App.Core.RemoteObjects");
          }
@@ -46,12 +59,11 @@
 +        {
 +            string pluginWithNamespace = TAppSettingsManager.GetValue("plugin");
 +            Template.SetCodelet("REMOTEOBJECTSNAMESPACE", pluginWithNamespace + ".RemoteObjects");
-+            Template.AddToCodelet("USINGNAMESPACES", "using " + pluginWithNamespace + ".Data;" + Environment.NewLine);
 +        }
          else
          {
              Template.SetCodelet("REMOTEOBJECTSNAMESPACE", "Ict.Petra.Client.App.Core.RemoteObjects");
-@@ -581,7 +591,7 @@
+@@ -581,7 +597,7 @@
  
              if ((module == "all") || (tn.Name == module))
              {

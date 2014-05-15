@@ -1,5 +1,5 @@
---- before/csharp/ICT/BuildTools/GenerateGlue/CreateInterfaces.cs	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/csharp/ICT/BuildTools/GenerateGlue/CreateInterfaces.cs	2014-05-10 15:19:09.000000000 +0200
+--- before/csharp/ICT/BuildTools/GenerateGlue/CreateInterfaces.cs	2014-05-15 21:56:00.000000000 +0200
++++ patched/csharp/ICT/BuildTools/GenerateGlue/CreateInterfaces.cs	2014-05-15 22:04:35.000000000 +0200
 @@ -4,7 +4,7 @@
  // @Authors:
  //       timop
@@ -9,7 +9,7 @@
  //
  // This file is part of OpenPetra.org.
  //
-@@ -343,18 +343,27 @@
+@@ -343,18 +343,28 @@
      /// </summary>
      public static string AddNamespacesFromYmlFile(String AOutputPath, string AModuleName)
      {
@@ -24,20 +24,21 @@
 +            string pluginWithNamespace = TAppSettingsManager.GetValue("plugin");
 +            result += "using " + pluginWithNamespace + ".Data;" + Environment.NewLine;
 +        }
-+        else
+ 
+-        StringCollection usingNamespaces = TYml2Xml.GetElements(RootNode, AModuleName);
++        if (File.Exists(AOutputPath + Path.DirectorySeparatorChar + "InterfacesUsingNamespaces.yml"))
 +        {
 +            TYml2Xml reader = new TYml2Xml(AOutputPath + Path.DirectorySeparatorChar + "InterfacesUsingNamespaces.yml");
 +            XmlDocument doc = reader.ParseYML2XML();
  
--        StringCollection usingNamespaces = TYml2Xml.GetElements(RootNode, AModuleName);
-+            XmlNode RootNode = doc.DocumentElement.FirstChild;
- 
 -        string result = string.Empty;
-+            StringCollection usingNamespaces = TYml2Xml.GetElements(RootNode, AModuleName);
++            XmlNode RootNode = doc.DocumentElement.FirstChild;
  
 -        foreach (string s in usingNamespaces)
 -        {
 -            result += "using " + s.Trim() + ";" + Environment.NewLine;
++            StringCollection usingNamespaces = TYml2Xml.GetElements(RootNode, AModuleName);
++
 +            foreach (string s in usingNamespaces)
 +            {
 +                result += "using " + s.Trim() + ";" + Environment.NewLine;
@@ -45,7 +46,7 @@
          }
  
          return result;
-@@ -384,7 +393,13 @@
+@@ -384,7 +394,13 @@
          // get all csharp files that might hold implementations of remotable classes
          List <CSParser>CSFiles = null;
  

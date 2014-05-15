@@ -1,5 +1,5 @@
---- before/csharp/ICT/BuildTools/GenerateWinForms/FormWriter.cs	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/csharp/ICT/BuildTools/GenerateWinForms/FormWriter.cs	2014-05-10 15:19:09.000000000 +0200
+--- before/csharp/ICT/BuildTools/GenerateWinForms/FormWriter.cs	2014-05-15 21:54:24.000000000 +0200
++++ patched/csharp/ICT/BuildTools/GenerateWinForms/FormWriter.cs	2014-05-15 22:04:07.000000000 +0200
 @@ -608,13 +608,12 @@
          /// Creates from the template resource file and the generated resource data
          /// a new resource file
@@ -68,7 +68,7 @@
          {
              ResetAllValues();
              FCodeStorage = ACodeStorage;
-@@ -1163,7 +1162,15 @@
+@@ -1192,7 +1191,15 @@
              // load the dataset if there is a dataset defined for this screen. this allows us to reference customtables and custom fields
              if (FCodeStorage.HasAttribute("DatasetType"))
              {
@@ -85,7 +85,7 @@
              }
              else
              {
-@@ -1642,7 +1649,7 @@
+@@ -1671,7 +1678,7 @@
                  FTemplate.SetCodelet("GETSELECTEDDETAILROW", getSelectedDetailRow);
              }
  

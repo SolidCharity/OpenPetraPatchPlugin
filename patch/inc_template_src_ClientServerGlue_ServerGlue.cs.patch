@@ -1,5 +1,5 @@
---- before/inc/template/src/ClientServerGlue/ServerGlue.cs	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/inc/template/src/ClientServerGlue/ServerGlue.cs	2014-05-10 15:19:09.000000000 +0200
+--- before/inc/template/src/ClientServerGlue/ServerGlue.cs	2014-05-15 21:56:00.000000000 +0200
++++ patched/inc/template/src/ClientServerGlue/ServerGlue.cs	2014-05-15 22:04:07.000000000 +0200
 @@ -26,7 +26,7 @@
  using Ict.Petra.Server.App.Core;
  {#USINGNAMESPACES}

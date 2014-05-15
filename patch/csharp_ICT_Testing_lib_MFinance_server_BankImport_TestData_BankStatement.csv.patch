@@ -1,0 +1,7 @@
+--- before/csharp/ICT/Testing/lib/MFinance/server/BankImport/TestData/BankStatement.csv	2014-05-15 21:54:24.000000000 +0200
++++ patched/csharp/ICT/Testing/lib/MFinance/server/BankImport/TestData/BankStatement.csv	1970-01-01 01:00:00.000000000 +0100
+@@ -1,4 +0,0 @@
+-"30.09.2010";"30.09.2010";"43005001";"20,00";"EUR";""
+-"39.09.2010";"30.09.2010";"43005001";"25,00";"EUR";""
+-"30.09.2010";"30.09.2010";"43005002";"30,00";"EUR";""
+-"39.09.2010";"30.09.2010";"43005001";"40,00";"EUR";""

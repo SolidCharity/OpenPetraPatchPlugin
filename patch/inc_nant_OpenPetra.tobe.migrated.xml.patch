@@ -1,5 +1,5 @@
---- before/inc/nant/OpenPetra.tobe.migrated.xml	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/inc/nant/OpenPetra.tobe.migrated.xml	2014-05-10 15:19:09.000000000 +0200
+--- before/inc/nant/OpenPetra.tobe.migrated.xml	2014-05-15 21:56:00.000000000 +0200
++++ patched/inc/nant/OpenPetra.tobe.migrated.xml	2014-05-15 22:04:07.000000000 +0200
 @@ -116,6 +116,7 @@
    <loadtasks assembly="${Ict.Tools.NAntTasks.DLL}" unless="${task::exists('ExecDotNet')}"/>
    <property name="module" value="all" overwrite="false"/>

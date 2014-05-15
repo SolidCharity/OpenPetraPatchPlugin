@@ -1,8 +1,6 @@
-diff --git a/OpenPetra.build b/OpenPetra.build
-index d4bc6a6..90a86ef 100644
---- a/OpenPetra.build
-+++ b/OpenPetra.build
-@@ -52,7 +52,7 @@ compat:
+--- before/OpenPetra.build	2014-05-15 21:56:00.000000000 +0200
++++ patched/OpenPetra.build	2014-05-15 22:04:07.000000000 +0200
+@@ -52,7 +52,7 @@
    generateORM: generates Object Relational Mapping routines from petra.xml
      sub items: generateORMCachedTables, generateORMData, generateORMAccess, generateORMReferenceCounts
    generateGlue: generates the interfaces and instantiators, which is the glue between client and server
@@ -11,7 +9,7 @@ index d4bc6a6..90a86ef 100644
    generateWinform: generate a single yaml file, compile it and optionally and start the client
         nant generateWinform -D:file=MFinance/Gui/GL/GLBatch.yaml
         nant generateWinform startPetraClient -D:file=MFinance/Gui/GL/GLBatch.yaml
-@@ -394,6 +394,7 @@ useful parameters
+@@ -394,6 +394,7 @@
    
    <!-- generate the files for Ict.Petra.Shared.lib.data, ie. the tables and datasets -->
    <nant inheritall="false" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/Shared/Ict.Petra.Shared.build')}" verbose="${verbose}"/>
@@ -19,7 +17,7 @@ index d4bc6a6..90a86ef 100644
    
    <echo message="Target generateORMData finished at: ${datetime::now()}" />         
  </target>
-@@ -415,6 +416,7 @@ useful parameters
+@@ -415,6 +416,7 @@
    <if test="${WithWindowsClient or WithLinuxClient}">
      <nant inheritall="true" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/Client/Ict.Petra.Client.build')}" verbose="${verbose}"/>
      <nant inheritall="true" target="custdepend" buildfile="${path::combine(dir.csharp, 'ICT/Petra/PetraClient/PetraClient.build')}" verbose="${verbose}"/>

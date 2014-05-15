@@ -1,20 +1,22 @@
---- before/csharp/ICT/BuildTools/GenerateGlue/CreateServerGlue.cs	2014-05-10 15:20:00.000000000 +0200
-+++ plugin/csharp/ICT/BuildTools/GenerateGlue/CreateServerGlue.cs	2014-05-10 15:19:09.000000000 +0200
-@@ -533,6 +533,13 @@
+--- before/csharp/ICT/BuildTools/GenerateGlue/CreateServerGlue.cs	2014-05-15 21:56:00.000000000 +0200
++++ patched/csharp/ICT/BuildTools/GenerateGlue/CreateServerGlue.cs	2014-05-15 22:04:35.000000000 +0200
+@@ -533,6 +533,15 @@
          InterfacePath = InterfacePath.Substring(0, InterfacePath.IndexOf("csharp/ICT/Petra")) + "csharp/ICT/Petra/Shared/lib/Interfaces";
          Template.AddToCodelet("USINGNAMESPACES", CreateInterfaces.AddNamespacesFromYmlFile(InterfacePath, tn.Name));
  
 +        if (AOutputPath.Contains("ICT/Petra/Plugins/"))
 +        {
 +            Template.AddToCodelet("USINGNAMESPACES", "using Ict.Petra.Server.App.WebService;" + Environment.NewLine);
-+            string pluginWithNamespace = TAppSettingsManager.GetValue("plugin");
-+            Template.AddToCodelet("USINGNAMESPACES", "using " + pluginWithNamespace + ".Data;" + Environment.NewLine);
++
++            // add namespaces that are required by the plugin
++            InterfacePath = Path.GetFullPath(AOutputPath + "/../").Replace(Path.DirectorySeparatorChar, '/');
++            Template.AddToCodelet("USINGNAMESPACES", CreateInterfaces.AddNamespacesFromYmlFile(InterfacePath, "Plugin"));
 +        }
 +
          FUsingNamespaces = new SortedList <string, string>();
          FContainsAsynchronousExecutionProgress = false;
  
-@@ -563,6 +570,16 @@
+@@ -563,6 +572,16 @@
              Template.AddToCodelet("USINGNAMESPACES", "using " + usingNamespace + ";" + Environment.NewLine);
          }
  
@@ -31,7 +33,7 @@
          Template.FinishWriting(OutputFile, ".cs", true);
      }
  
-@@ -585,7 +602,7 @@
+@@ -585,7 +604,7 @@
  
              if ((module == "all") || (tn.Name == module))
              {
