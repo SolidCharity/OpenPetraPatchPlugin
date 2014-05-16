@@ -1,5 +1,5 @@
---- before/OpenPetra.build	2014-05-15 21:56:00.000000000 +0200
-+++ patched/OpenPetra.build	2014-05-15 22:04:07.000000000 +0200
+--- openpetraNow.PatchRemoting/OpenPetra.build	2014-05-16 08:52:04.000000000 +0200
++++ openpetraNow.PatchPlugin/OpenPetra.build	2014-05-16 11:34:44.000000000 +0200
 @@ -52,7 +52,7 @@
    generateORM: generates Object Relational Mapping routines from petra.xml
      sub items: generateORMCachedTables, generateORMData, generateORMAccess, generateORMReferenceCounts
