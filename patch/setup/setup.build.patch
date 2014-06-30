@@ -20,7 +20,7 @@
           <include name="*.asmx" />
        </fileset>
      </copy>
-+    <copy todir="${setupDir}/asmx">
++    <copy todir="${setupDir}/asmx" flatten="true">
 +      <fileset basedir="${dir.root}/csharp/ICT/Petra/Plugins">
 +         <include name="**/*.asmx" />
 +      </fileset>
