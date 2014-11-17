@@ -17,9 +17,9 @@
  
                  foreach (string incNamespace in IncludeNamespaces)
                  {
--                    if (projectName.StartsWith(incNamespace))
+-                    if (projectName.StartsWith(incNamespace) || (projectName + ".csproj" == incNamespace))
 +                    Regex regex = new Regex(incNamespace.Replace(".", "\\.").Replace("*", ".*"));
-+                    if (projectName.StartsWith(incNamespace) || regex.Match(projectName).Success)
++                    if (projectName.StartsWith(incNamespace) || (projectName + ".csproj" == incNamespace) || regex.Match(projectName).Success)
                      {
                          includeProject = true;
                          break;
