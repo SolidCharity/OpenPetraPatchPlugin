@@ -5,11 +5,11 @@
                  WriteSolutionFile(FTemplateDir, ide.Trim(),
                      "OpenPetra.Server.sln",
 -                    "Ict.Common,Ict.Petra.Shared,Ict.Petra.Server,Ict.Petra.PetraServerConsole");
-+                    "Ict.Common,Ict.Petra.Shared,Ict.Petra.Server,Ict.Petra.PetraServerConsole,Ict.Petra.Plugins.*.Data,Ict.Petra.Plugins.*.Server");
++                    "Ict.Common,Ict.Petra.Shared,Ict.Petra.Server,Ict.Petra.PetraServerConsole,Ict.Petra.Plugins.*.data,Ict.Petra.Plugins.*.Server");
                  WriteSolutionFile(FTemplateDir, ide.Trim(),
                      "OpenPetra.Client.sln",
 -                    "Ict.Common,Ict.Petra.Shared,Ict.Petra.Client,Ict.Petra.PetraClient");
-+                    "Ict.Common,Ict.Petra.Shared,Ict.Petra.Client,Ict.Petra.PetraClient,Ict.Petra.Plugins.*.Data,Ict.Petra.Plugins.*.Client");
++                    "Ict.Common,Ict.Petra.Shared,Ict.Petra.Client,Ict.Petra.PetraClient,Ict.Petra.Plugins.*.data,Ict.Petra.Plugins.*.Client");
                  WriteSolutionFile(FTemplateDir, ide.Trim(),
                      "OpenPetra.Tools.sln",
                      "Ict.Common,Ict.Tools");
